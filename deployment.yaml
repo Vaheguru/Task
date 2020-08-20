@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-node
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube-node
+  template:
+    metadata:
+      labels:
+        app: kube-node
+    spec:
+      containers:
+        - name: kube-node
+          image: vaheguru/harpa:v1
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+
